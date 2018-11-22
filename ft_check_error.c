@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkerror.c                                    :+:      :+:    :+:   */
+/*   ft_check_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,9 +17,7 @@
 	# = 35 || . = 46 || \n = 10
 */
 
-void			ft_printerror(fd);
-
-static	void	ft_checkline(char *str, int nb_piece, int fd)
+static	void	ft_check_line(char *str, int nb_piece, int fd)
 {
 	int i;
 
@@ -31,11 +29,11 @@ static	void	ft_checkline(char *str, int nb_piece, int fd)
 			i++;
 		/* Si le charactere est different de '#' ou '.' et que la line est > a 4 caracteres return error */
 		if ((str[i] != 35 || str[i] != 46) && i != 4)
-			ft_printerror(fd, 1);
+			ft_print_error(fd, 1);
 	}
 }
 
-static	int		ft_countpiece(char *str)
+static	int		ft_count_piece(char *str)
 {
 	int nb_piece;
 
@@ -44,11 +42,11 @@ static	int		ft_countpiece(char *str)
 	if (str[1] == '\0')
 		nb_piece++;
 	else if (nb_piece > 26)
-		ft_checkerror(fd, 1);
+		ft_print_error(fd, 1);
 	return (nb_piece);
 }
 
-int				ft_checkerror(char *file)
+int				ft_check_error(char *file)
 {
 	char	*line;
 	int		fd;
@@ -56,15 +54,15 @@ int				ft_checkerror(char *file)
 
 	*line = NULL;
 	if (fd = open(file, O_RDONLY) == -1)
-		ft_printerror(fd, 2);
+		ft_print_error(fd, 2);
 	while (get_next_line(fd, &line) == 1)
 	{
 		/* Verifie que la ligne contient uniquement des '#' '.'
 		ET qu'elle ne contient que 4 caracteres. */
-		ft_checkline(line, &nb_piece, fd);
+		ft_check_line(line, &nb_piece, fd);
 		/* Calcule le nombre de pieces dans le fichier et
 		retourne error si le nombre de pieces est trop grand */
-		nb_piece += ft_countpiece(line);
+		nb_piece += ft_count_piece(line);
 
 	}
 	close(fd);
