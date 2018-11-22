@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_fill.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 17:01:03 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/22 18:03:30 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/22 17:57:35 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/22 18:35:45 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <fcntl.h>
 #include "fillit.h"
 
-int		main(int ac, char **av)
+/*
+**	fill a tab of pieces
+*/
+t_piece		**ft_fill(char *file, int nb_pcs)
 {
-	int		nb_pcs;
+	t_piece	*num_pc[nb_pcs + 1];
+	int		fd;
+	int 	i;
+	int 	j;
 
-	if (ac != 2)
+	tab[nb_pcs] = NULL;
+	i = 0;
+	j = 0;
+	if ((fd = open(file, O_RDONLY)) <= 0)
+		ft_printerror(fd, 1);
+	while (j < nb_pcs)
 	{
-		write(-1, "usage: ./fillit source_file\n", 28);
-		return (0);
+		while (i < 4)
+		{
+			if (get_next_line(fd, &(num_pc[j]->piece[i])) != 1)
+				ft_printerror(fd, 1);
+			i++;
+		}
+		j++;
 	}
-	if (!(nb_pcs = ft_checkerror(av[1])))
-	{
-		write(-1, "error\n", 6);
-		return (0);
-	}
-	ft_fill(av[1], nb_pcs);
-	return (0);
+	return(num_pc);
 }
