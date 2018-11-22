@@ -18,8 +18,8 @@ typedef struct	s_piece
 	char	piece[4][4];
 }				t_piece;
 
-int			ft_checkerror(char *file);
-void		ft_printerror(int fd, int num;
-void		ft_fill(char *file, int nb_pcs);
+int		ft_check_error(char *file);
+void		ft_print_error(int fd, int num;
+void		ft_fillit(char *file, int nb_pcs);
 
 #endif
