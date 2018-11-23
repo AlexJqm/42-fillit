@@ -29,4 +29,3 @@ int		main(int ac, char **av)
 	}
 	ft_fillit(av[1], nb_pcs);
 	return (0);
-}
