@@ -22,11 +22,11 @@ int		main(int ac, char **av)
 		write(-1, "usage: ./fillit source_file\n", 28);
 		return (0);
 	}
-	if (!(nb_pcs = ft_checkerror(av[1])))
+	if (!(nb_pcs = ft_check_error(av[1])))
 	{
 		write(-1, "error\n", 6);
 		return (0);
 	}
-	ft_fill(av[1], nb_pcs);
+	ft_fillit(av[1], nb_pcs);
 	return (0);
 }
