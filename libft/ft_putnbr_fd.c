@@ -1,46 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/13 16:33:55 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/16 12:41:41 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <unistd.h>
+#include "libft.h"
 
-static void	ft_print_pc(t_piece pc)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while(i <= 4)
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	if (n >= 0)
+		ft_putchar_fd((n % 10) + '0', fd);
+	else
 	{
-		while (j <= 4)
+		ft_putchar_fd('-', fd);
+		if (n == -2147483648)
 		{
-			write(1, &(pc.piece[i][j]), 1);
-			j++;
+			ft_putstr_fd("2147483648", fd);
+			return ;
 		}
-		j = 0;
-		i++;
-	}
-}
-
-void	ft_print_tab(t_piece *tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i].piece[0])
-	{
-		ft_print_pc(tab[i]);
-		write(1, "\n", 1);
-		i++;
+		ft_putnbr_fd(-n, fd);
 	}
 }

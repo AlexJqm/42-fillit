@@ -6,7 +6,7 @@
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:01:03 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/22 18:03:30 by coremart         ###   ########.fr       */
+/*   Updated: 2018/11/25 11:44:47 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int		main(int ac, char **av)
 		write(-1, "error\n", 6);
 		return (0);
 	}
-	ft_fillit(av[1], nb_pcs);
+	ft_print_tab(ft_fill(av[1], nb_pcs));
 	return (0);
 }

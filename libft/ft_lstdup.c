@@ -1,46 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_lstdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/14 17:35:54 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/16 14:01:28 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <unistd.h>
+#include "libft.h"
 
-static void	ft_print_pc(t_piece pc)
+t_list	*ft_lstdup(t_list *src)
 {
-	int i;
-	int j;
+	t_list *dst;
+	t_list *tmp;
 
-	i = 0;
-	j = 0;
-	while(i <= 4)
+	if (!(src))
+		return (NULL);
+	if (!(dst = ft_lstnew(src->content, src->content_size)))
+		return (NULL);
+	tmp = dst;
+	src = src->next;
+	while (src)
 	{
-		while (j <= 4)
-		{
-			write(1, &(pc.piece[i][j]), 1);
-			j++;
-		}
-		j = 0;
-		i++;
+		if (!(tmp->next = ft_lstnew(src->content, src->content_size)))
+			return (NULL);
+		tmp = tmp->next;
+		src = src->next;
 	}
-}
-
-void	ft_print_tab(t_piece *tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i].piece[0])
-	{
-		ft_print_pc(tab[i]);
-		write(1, "\n", 1);
-		i++;
-	}
+	tmp = NULL;
+	return (dst);
 }

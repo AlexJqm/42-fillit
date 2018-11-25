@@ -1,46 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/08 12:49:40 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/16 13:03:53 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <unistd.h>
+#include <string.h>
 
-static void	ft_print_pc(t_piece pc)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	int i;
-	int j;
+	size_t	i;
 
 	i = 0;
-	j = 0;
-	while(i <= 4)
+	while (src[i] && i < len)
 	{
-		while (j <= 4)
-		{
-			write(1, &(pc.piece[i][j]), 1);
-			j++;
-		}
-		j = 0;
+		dst[i] = src[i];
 		i++;
 	}
-}
-
-void	ft_print_tab(t_piece *tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i].piece[0])
+	while (i < len)
 	{
-		ft_print_pc(tab[i]);
-		write(1, "\n", 1);
+		dst[i] = '\0';
 		i++;
 	}
+	return (dst);
 }

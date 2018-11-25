@@ -1,46 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/08 11:20:08 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/16 13:47:12 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <unistd.h>
+#include "libft.h"
+#include <stdlib.h>
 
-static void	ft_print_pc(t_piece pc)
+char	*ft_strdup(const char *s1)
 {
-	int i;
-	int j;
+	size_t	size;
+	size_t	i;
+	char	*dest;
 
+	size = ft_strlen(s1);
 	i = 0;
-	j = 0;
-	while(i <= 4)
+	if (!(dest = (char*)malloc(sizeof(char) * size + 1)))
+		return (NULL);
+	while (i < size)
 	{
-		while (j <= 4)
-		{
-			write(1, &(pc.piece[i][j]), 1);
-			j++;
-		}
-		j = 0;
+		dest[i] = s1[i];
 		i++;
 	}
-}
-
-void	ft_print_tab(t_piece *tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i].piece[0])
-	{
-		ft_print_pc(tab[i]);
-		write(1, "\n", 1);
-		i++;
-	}
+	dest[i] = '\0';
+	return (dest);
 }

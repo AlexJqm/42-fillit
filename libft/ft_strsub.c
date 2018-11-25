@@ -1,46 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/12 18:10:52 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/16 13:07:00 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
 
-static void	ft_print_pc(t_piece pc)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	int i;
-	int j;
+	char	*res;
+	size_t	i;
 
 	i = 0;
-	j = 0;
-	while(i <= 4)
+	if (s)
 	{
-		while (j <= 4)
+		if (!(res = (char*)malloc(len + 1)))
+			return (NULL);
+		while (i < len)
 		{
-			write(1, &(pc.piece[i][j]), 1);
-			j++;
+			res[i] = s[start + i];
+			i++;
 		}
-		j = 0;
-		i++;
+		res[i] = 0;
+		return (res);
 	}
-}
-
-void	ft_print_tab(t_piece *tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i].piece[0])
-	{
-		ft_print_pc(tab[i]);
-		write(1, "\n", 1);
-		i++;
-	}
+	return (NULL);
 }

@@ -1,46 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/14 09:44:31 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/16 13:44:55 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <unistd.h>
+#include <stdlib.h>
+#include "libft.h"
 
-static void	ft_print_pc(t_piece pc)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	int i;
-	int j;
+	t_list	*res;
 
-	i = 0;
-	j = 0;
-	while(i <= 4)
+	if (!(res = (t_list*)malloc(sizeof(t_list))))
+		return (NULL);
+	if (!(content))
 	{
-		while (j <= 4)
-		{
-			write(1, &(pc.piece[i][j]), 1);
-			j++;
-		}
-		j = 0;
-		i++;
+		res->content = NULL;
+		res->content_size = 0;
 	}
-}
-
-void	ft_print_tab(t_piece *tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i].piece[0])
+	else
 	{
-		ft_print_pc(tab[i]);
-		write(1, "\n", 1);
-		i++;
+		if (!(res->content = ft_memdup((const void*)content, content_size)))
+			return (NULL);
+		res->content_size = content_size;
 	}
+	res->next = NULL;
+	return (res);
 }

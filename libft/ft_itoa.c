@@ -1,46 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/13 14:56:02 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/16 13:57:01 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <unistd.h>
+#include "libft.h"
 
-static void	ft_print_pc(t_piece pc)
+char	*ft_itoa(int n)
 {
-	int i;
-	int j;
+	char	*str;
+	int		sign;
+	int		i;
+	int		size;
 
+	sign = 0;
 	i = 0;
-	j = 0;
-	while(i <= 4)
+	if (n < 0)
+		sign = 1;
+	size = ft_count_digit(n) + sign;
+	if (!(str = ft_strnew(size)))
+		return (NULL);
+	if (sign)
 	{
-		while (j <= 4)
-		{
-			write(1, &(pc.piece[i][j]), 1);
-			j++;
-		}
-		j = 0;
-		i++;
+		str[i++] = '-';
+		if (n == -2147483648)
+			return (ft_strcpy(str, "-2147483648"));
+		n *= -1;
 	}
-}
-
-void	ft_print_tab(t_piece *tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i].piece[0])
+	while (size - sign)
 	{
-		ft_print_pc(tab[i]);
-		write(1, "\n", 1);
-		i++;
+		str[--size] = (char)(n % 10 + '0');
+		n /= 10;
 	}
+	return (str);
 }

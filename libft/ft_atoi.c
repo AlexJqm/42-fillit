@@ -1,46 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/09 12:44:19 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/12 15:11:45 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <unistd.h>
-
-static void	ft_print_pc(t_piece pc)
+int		ft_atoi(const char *str)
 {
 	int i;
-	int j;
+	int sign;
+	int res;
 
 	i = 0;
-	j = 0;
-	while(i <= 4)
+	sign = 1;
+	res = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		while (j <= 4)
-		{
-			write(1, &(pc.piece[i][j]), 1);
-			j++;
-		}
-		j = 0;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-}
-
-void	ft_print_tab(t_piece *tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i].piece[0])
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		ft_print_pc(tab[i]);
-		write(1, "\n", 1);
+		res = res * 10 + (int)(str[i] - '0');
 		i++;
 	}
+	return (res * sign);
 }

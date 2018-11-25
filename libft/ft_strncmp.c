@@ -1,46 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/09 11:51:57 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/16 13:02:07 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <unistd.h>
+#include <string.h>
 
-static void	ft_print_pc(t_piece pc)
+int		ft_strncmp(const char *s1, const char *s2, size_t len)
 {
-	int i;
-	int j;
+	size_t i;
 
 	i = 0;
-	j = 0;
-	while(i <= 4)
-	{
-		while (j <= 4)
-		{
-			write(1, &(pc.piece[i][j]), 1);
-			j++;
-		}
-		j = 0;
+	if (len == 0)
+		return (0);
+	while (s1[i] == s2[i] && s1[i] && i < len - 1)
 		i++;
-	}
-}
-
-void	ft_print_tab(t_piece *tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i].piece[0])
-	{
-		ft_print_pc(tab[i]);
-		write(1, "\n", 1);
-		i++;
-	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

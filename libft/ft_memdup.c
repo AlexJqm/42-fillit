@@ -1,46 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_memdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/14 09:58:08 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/16 13:46:10 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <unistd.h>
+#include <stdlib.h>
+#include "libft.h"
 
-static void	ft_print_pc(t_piece pc)
+void	*ft_memdup(const void *src, size_t size)
 {
-	int i;
-	int j;
+	void	*dst;
 
-	i = 0;
-	j = 0;
-	while(i <= 4)
-	{
-		while (j <= 4)
-		{
-			write(1, &(pc.piece[i][j]), 1);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}
-
-void	ft_print_tab(t_piece *tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i].piece[0])
-	{
-		ft_print_pc(tab[i]);
-		write(1, "\n", 1);
-		i++;
-	}
+	if (!(dst = malloc(sizeof(unsigned char) * size)))
+		return (NULL);
+	ft_memcpy(dst, src, size);
+	return (dst);
 }

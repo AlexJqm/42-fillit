@@ -1,46 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/12 17:10:39 by coremart          #+#    #+#             */
+/*   Updated: 2018/11/12 19:11:37 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <unistd.h>
-
-static void	ft_print_pc(t_piece pc)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while(i <= 4)
-	{
-		while (j <= 4)
-		{
-			write(1, &(pc.piece[i][j]), 1);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-}
-
-void	ft_print_tab(t_piece *tab)
+void	ft_striter(char *s, void (*f)(char*))
 {
 	int i;
 
-	i = 0;
-	while (tab[i].piece[0])
+	i = -1;
+	if (s && f)
 	{
-		ft_print_pc(tab[i]);
-		write(1, "\n", 1);
-		i++;
+		while (s[++i])
+			f(&s[i]);
 	}
 }
