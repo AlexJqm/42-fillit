@@ -6,12 +6,12 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 18:01:42 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/26 12:55:38 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/26 13:26:03 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include "libft.h"
+#include "includes/fillit.h"
+#include "libft/includes/libft.h"
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <unistd.h>

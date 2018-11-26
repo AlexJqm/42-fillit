@@ -6,12 +6,12 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:01:03 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/26 13:09:34 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/26 13:25:58 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include "libft.h"
+#include "includes/fillit.h"
+#include "libft/includes/libft.h"
 
 int		main(int ac, char **av)
 {

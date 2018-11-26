@@ -6,12 +6,14 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 18:08:33 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/26 12:55:45 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/26 13:26:12 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include "libft.h"
+#include "includes/fillit.h"
+#include "libft/includes/libft.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 void	ft_print_error(int fd, int num)
 {

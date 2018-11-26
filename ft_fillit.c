@@ -6,14 +6,14 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:57:35 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/26 12:11:15 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/26 13:26:17 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <string.h>
 #include <stdlib.h>
-#include "fillit.h"
+#include "includes/fillit.h"
 
 t_piece		*ft_fillit(char *file, int nb_pcs)
 {

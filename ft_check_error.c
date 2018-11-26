@@ -6,11 +6,13 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:19:17 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/26 12:11:49 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/26 13:26:21 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "includes/fillit.h"
+#include <fcntl.h>
+#include <unistd.h>
 
 static	void	ft_check_line(char *str, int fd)
 {
@@ -28,36 +30,36 @@ static	void	ft_check_line(char *str, int fd)
 
 static	int		ft_count_piece(char *str, int nb_lines, int fd)
 {
-	int nb_piece;
+	int nb_pieces;
 
-	nb_piece = 1;
+	nb_pieces = 1;
 	if (str[1] == '\0')
 	{
-		nb_piece++;
+		nb_pieces++;
 		nb_lines = 0;
 	}
-	if (str[1] != '\0' || nb_piece > 26)
+	if (str[1] != '\0' || nb_pieces > 26)
 		ft_print_error(fd, 1);
-	return (nb_piece);
+	return (nb_pieces);
 }
 
 int				ft_check_error(char *file)
 {
-	char	*line;
+	char	*line = NULL;
 	int		fd;
 	int		nb_pieces;
 	int		nb_lines;
 
-	*line = NULL;
 	nb_lines = -1;
-	if (fd = open(file, O_RDONLY) == -1)
+	nb_pieces = 0;
+	if ((fd = open(file, O_RDONLY)) == -1)
 		ft_print_error(fd, 2);
 	while (get_next_line(fd, &line) == 1)
 	{
 		while (nb_lines++ <= 4)
 			ft_check_line(line, fd);
-		nb_piece += ft_count_piece(line, &nb_lines, fd);
+		nb_pieces += ft_count_piece(line, nb_lines, fd);
 	}
 	close(fd);
-	return (nb_piece);
+	return (nb_pieces);
 }
