@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_tab.c                                        :+:      :+:    :+:   */
+/*   ft_print_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/25 13:16:23 by coremart         ###   ########.fr       */
+/*   Updated: 2018/11/26 12:12:53 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <unistd.h>
 
-static void	ft_print_pc(t_piece pc)
+static void		ft_print_pc(t_piece pc)
 {
 	int i;
 	int j;
 
 	i = 0;
 	j = 0;
-	while(i <= 4)
+	while (i <= 4)
 	{
 		while (j <= 4)
 		{
@@ -32,7 +32,7 @@ static void	ft_print_pc(t_piece pc)
 	}
 }
 
-void	ft_print_tab(t_piece *tab)
+void			ft_print_tab(t_piece *tab)
 {
 	int i;
 

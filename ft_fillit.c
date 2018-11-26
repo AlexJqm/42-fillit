@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:57:35 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/26 11:48:16 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/26 12:11:15 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,15 @@
 #include <stdlib.h>
 #include "fillit.h"
 
-/*
-**	fill a tab of pieces
-*/
 t_piece		*ft_fillit(char *file, int nb_pcs)
 {
-	t_piece	*num_pc;
-	int		fd;
-	int 	i;
-	int 	j;
+	t_piece		*num_pc;
+	int			fd;
+	int			i;
+	int			j;
 
 	fd = -1;
-	if(!(num_pc = (t_piece*)malloc(sizeof(num_pc) * (nb_pcs + 1))))
+	if (!(num_pc = (t_piece*)malloc(sizeof(num_pc) * (nb_pcs + 1))))
 		ft_print_error(fd, 1);
 	num_pc[nb_pcs].piece[0][0] = '\0';
 	i = 0;
@@ -44,5 +41,5 @@ t_piece		*ft_fillit(char *file, int nb_pcs)
 		i = 0;
 		j++;
 	}
-	return(num_pc);
+	return (num_pc);
 }

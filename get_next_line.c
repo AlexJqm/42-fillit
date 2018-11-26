@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 18:01:42 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/26 11:08:52 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/26 12:12:13 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		get_next_line(const int fd, char **line)
 
 	if (fd < 0 || !line || BUFF_SIZE < 1 || read(fd, buf, 0) < 0)
 		return (-1);
-	if(!(str[fd]) && (str[fd] = ft_strnew(1)) == NULL)
+	if (!(str[fd]) && (str[fd] = ft_strnew(1)) == NULL)
 		return (-1);
 	while (!(ft_strchr(str[fd], '\n')) && (rd = read(fd, buf, BUFF_SIZE)) > 0)
 	{

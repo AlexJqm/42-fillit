@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:19:17 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/26 12:05:12 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/26 12:11:49 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int				ft_check_error(char *file)
 	char	*line;
 	int		fd;
 	int		nb_pieces;
-	int 	nb_lines;
+	int		nb_lines;
 
 	*line = NULL;
 	nb_lines = -1;
