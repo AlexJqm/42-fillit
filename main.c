@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:01:03 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/26 11:09:02 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/26 12:19:44 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ int		main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		write(-1, "usage: ./fillit source_file\n", 28);
+		ft_color("usage: ./fillit source_file", "red");
+		ft_putchar('\n');
 		return (0);
 	}
 	if (!(nb_pcs = ft_check_error(av[1])))
 	{
-		write(-1, "error\n", 6);
+		ft_color("error", "red");
+		ft_putchar('\n');
 		return (0);
 	}
 	ft_print_tab(ft_fillit(av[1], nb_pcs));
