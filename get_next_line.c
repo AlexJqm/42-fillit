@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 18:01:42 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/25 13:18:44 by coremart         ###   ########.fr       */
+/*   Updated: 2018/11/26 11:08:52 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int		get_next_line(const int fd, char **line)
 		return (0);
 	*line = ft_strsub(str[fd], 0, ft_strclen(str[fd], '\n'));
 	tmp = str[fd];
-	str[fd] = ft_strsub(tmp, ft_strclen(str[fd], '\n') + 1,
-			ft_strlen(&str[fd][ft_strclen(str[fd], '\n')]));
+	str[fd] = ft_strsub(tmp, ft_strclen(str[fd], '\n') + 1, ft_strlen(str[fd]));
 	ft_strdel(&tmp);
 	return (1);
 }
