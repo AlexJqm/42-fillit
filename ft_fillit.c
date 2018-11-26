@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:57:35 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/26 11:08:27 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/26 11:48:16 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /*
 **	fill a tab of pieces
 */
-t_piece		*ft_fill(char *file, int nb_pcs)
+t_piece		*ft_fillit(char *file, int nb_pcs)
 {
 	t_piece	*num_pc;
 	int		fd;
