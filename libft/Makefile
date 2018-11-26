@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: coremart <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: coremart <coremart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 11:46:04 by coremart          #+#    #+#              #
-#    Updated: 2018/11/16 16:18:39 by coremart         ###   ########.fr        #
+#    Updated: 2018/11/26 12:55:13 by aljacque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,9 +78,10 @@ SRCS = ft_strlen.c \
 	   ft_min.c \
 	   ft_strclen.c \
 	   ft_count_digit.c \
-	   ft_memdup.c
+	   ft_memdup.c \
+	   ft_color.c
 OBJ = $(SRCS:.c=.o)
-HEADER = libft.h
+HEADER = ./includes/libft.h
 
 all: $(NAME)
 

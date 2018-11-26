@@ -6,12 +6,12 @@
 #    By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/21 16:52:56 by aljacque          #+#    #+#              #
-#    Updated: 2018/11/21 16:53:29 by aljacque         ###   ########.fr        #
+#    Updated: 2018/11/26 13:09:55 by aljacque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
-SRC = fillit.c
+SRC = main.c
 OBJ = $(SRC:.c=.o)
 HEADER = fillit.h
 CFLAG = -Wall -Werror -Wextra

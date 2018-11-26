@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 10:18:56 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/16 13:58:18 by coremart         ###   ########.fr       */
+/*   Updated: 2018/11/26 12:55:09 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int				ft_min(int a, int b);
 int				ft_strclen(const char *s, char c);
 int				ft_count_digit(int n);
 void			*ft_memdup(const void *src, size_t size);
+void			ft_color(char *str, char *color);
 
 #endif
