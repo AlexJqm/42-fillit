@@ -6,12 +6,12 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 18:08:33 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/26 13:26:12 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/28 12:39:08 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fillit.h"
-#include "libft/includes/libft.h"
+#include "libft/libft.h"
 #include <unistd.h>
 #include <stdlib.h>
 

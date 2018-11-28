@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:57:35 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/26 13:26:17 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/28 13:07:43 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include "includes/fillit.h"
+
+#include <stdio.h>
 
 t_piece		*ft_fillit(char *file, int nb_pcs)
 {
@@ -23,7 +25,7 @@ t_piece		*ft_fillit(char *file, int nb_pcs)
 	int			j;
 
 	fd = -1;
-	if (!(num_pc = (t_piece*)malloc(sizeof(num_pc) * (nb_pcs + 1))))
+	if (!(num_pc = (t_piece*)malloc(sizeof(t_piece) * (nb_pcs + 1))))
 		ft_print_error(fd, 1);
 	num_pc[nb_pcs].piece[0][0] = '\0';
 	i = 0;

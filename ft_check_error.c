@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:19:17 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/26 13:26:21 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/28 14:38:34 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-static	void	ft_check_line(char *str, int fd)
+#include <stdio.h>
+
+static void		ft_check_line(char *str, int fd)
 {
 	int i;
 
@@ -23,17 +25,20 @@ static	void	ft_check_line(char *str, int fd)
 	{
 		if (str[i] == 35 || str[i] == 46)
 			i++;
-		if ((str[i] != 35 || str[i] != 46) && i != 4)
+		if ((str[i] != 35 && str[i] != 46) || i == 4)
+		{
+			printf("OK2\n");
 			ft_print_error(fd, 1);
+		}
 	}
 }
 
-static	int		ft_count_piece(char *str, int nb_lines, int fd)
+static int		ft_count_piece(char *str, int nb_lines, int fd)
 {
 	int nb_pieces;
 
 	nb_pieces = 1;
-	if (str[1] == '\0')
+	if (str[0] == '\0')
 	{
 		nb_pieces++;
 		nb_lines = 0;
@@ -56,6 +61,7 @@ int				ft_check_error(char *file)
 		ft_print_error(fd, 2);
 	while (get_next_line(fd, &line) == 1)
 	{
+		printf("%s\n", line);
 		while (nb_lines++ <= 4)
 			ft_check_line(line, fd);
 		nb_pieces += ft_count_piece(line, nb_lines, fd);
