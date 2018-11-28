@@ -16,23 +16,21 @@ void	ft_color(char *str, char *color)
 {
 	if (!str || !color)
 		return ;
-	ft_putstr("\\033[");
-	if (ft_strcmp(color, "black"))
-		color = "30";
-	else if (ft_strcmp(color, "red"))
-		color = "31";
-	else if (ft_strcmp(color, "green"))
-		color = "32";
-	else if (ft_strcmp(color, "yellow"))
-		color = "33";
-	else if (ft_strcmp(color, "blue"))
-		color = "34";
-	else if (ft_strcmp(color, "white"))
-		color = "37";
+	if (!ft_strcmp(color, "black"))
+		str = ft_strjoin("\033[0;30m", str);
+	else if (!ft_strcmp(color, "red"))
+		str = ft_strjoin("\033[0;31m", str);
+	else if (!ft_strcmp(color, "green"))
+		str = ft_strjoin("\033[0;32m", str);
+	else if (!ft_strcmp(color, "yellow"))
+		str = ft_strjoin("\033[0;33m", str);
+	else if (!ft_strcmp(color, "blue"))
+		str = ft_strjoin("\033[0;34m", str);
+	else if (!ft_strcmp(color, "white"))
+		str = ft_strjoin("\033[0;37m", str);
 	else
 		return ;
-	ft_putstr(color);
-	ft_putchar('m');
 	ft_putstr(str);
-	ft_putstr("\\033[0m");
+	ft_putstr("\033[0m");
+
 }
