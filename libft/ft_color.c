@@ -34,4 +34,3 @@ void	ft_color(char *str, char *color)
 	ft_putstr("\033[0m");
 
 }
-
