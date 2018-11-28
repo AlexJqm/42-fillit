@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:19:17 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/28 15:35:18 by coremart         ###   ########.fr       */
+/*   Updated: 2018/11/28 16:01:29 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,15 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#include <stdio.h>
-
 static void		ft_check_line(char *str, int fd)
 {
 	int i;
 
 	i = 0;
-	while (str[i] != '\n')
+	while (str[i] != '\0')
 	{
-		printf("i = %d\nstr[i] == %d\n", i, (int)str[i]);
-	//	if (str[i] != 35 && str[i] != 46)
-	//		ft_print_error(fd, 1);
+		if (str[i] != 35 && str[i] != 46)
+			ft_print_error(fd, 1);
 		i++;
 	}
 	if (i != 4)
@@ -45,8 +42,10 @@ int				ft_check_error(char *file)
 		ft_print_error(fd, 2);
 	while (get_next_line(fd, &line) == 1)
 	{
-		if (!((nb_lines + 1) % 5) && line[0] == '\n')
+		if (!((nb_lines + 1) % 5) && line[0] == '\0')
 			nb_pieces++;
+		else if (!((nb_lines + 1) % 5))
+			ft_print_error(fd, 1);
 		else
 			ft_check_line(line, fd);
 		nb_lines++;
