@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:00:16 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/16 12:55:26 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/28 14:46:13 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_color(char *str, char *color)
 {
 	if (!str || !color)
 		return ;
-	ft_putstr("\033[");
+	ft_putstr("\\033[");
 	if (ft_strcmp(color, "black"))
 		color = "30";
 	else if (ft_strcmp(color, "red"))
@@ -34,5 +34,5 @@ void	ft_color(char *str, char *color)
 	ft_putstr(color);
 	ft_putchar('m');
 	ft_putstr(str);
-	ft_putstr("\033[0m");
+	ft_putstr("\\033[0m");
 }

@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:19:17 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/28 14:38:34 by coremart         ###   ########.fr       */
+/*   Updated: 2018/11/28 14:46:15 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,10 @@ static void		ft_check_line(char *str, int fd)
 	i = 0;
 	while (str[i] != '\n')
 	{
+		if ((str[i] != 35 && str[i] != 46) || i == 4)
+			ft_print_error(fd, 1);
 		if (str[i] == 35 || str[i] == 46)
 			i++;
-		if ((str[i] != 35 && str[i] != 46) || i == 4)
-		{
-			printf("OK2\n");
-			ft_print_error(fd, 1);
-		}
 	}
 }
 
