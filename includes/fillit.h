@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:38:29 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/26 13:05:59 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/28 15:40:54 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FILLIT_H
 
 # define BUFF_SIZE 100
+# define FD_NBR 4000
 
 typedef struct	s_piece
 {

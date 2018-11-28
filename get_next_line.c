@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 18:01:42 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/28 12:39:29 by coremart         ###   ########.fr       */
+/*   Created: 2018/11/25 15:52:53 by aljacque          #+#    #+#             */
+/*   Updated: 2018/11/28 15:41:42 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,55 @@
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <unistd.h>
-#include <stdlib.h>
 
-int		get_next_line(const int fd, char **line)
+static int		ft_next(int fd, char **str, char **line)
 {
-	static char		*str[256];
-	char			*tmp;
-	char			buf[BUFF_SIZE + 1];
-	int				rd;
+	char	*tmp;
 
-	if (fd < 0 || !line || BUFF_SIZE < 1 || read(fd, buf, 0) < 0)
-		return (-1);
-	if (!(str[fd]) && (str[fd] = ft_strnew(1)) == NULL)
-		return (-1);
-	while (!(ft_strchr(str[fd], '\n')) && (rd = read(fd, buf, BUFF_SIZE)) > 0)
+	if (str[fd][ft_strclen(str[fd], '\n')] == '\n')
+	{
+		if (!(*line = ft_strsub(str[fd], 0, ft_strclen(str[fd], '\n'))))
+			return (0);
+		tmp = str[fd];
+		if (!(str[fd] = ft_strsub(tmp, ft_strclen(str[fd], '\n') + 1,
+						ft_strlen(str[fd]))))
+			return (0);
+		ft_strdel(&tmp);
+		if (str[fd][0] == '\0')
+			ft_strdel(&str[fd]);
+	}
+	else if (str[fd][ft_strclen(str[fd], '\n')] == '\0')
+	{
+		if (!(*line = ft_strdup(str[fd])))
+			return (0);
+		ft_strdel(&str[fd]);
+	}
+	return (1);
+}
+
+int				get_next_line(const int fd, char **line)
+{
+	int			rd;
+	static char	*str[FD_NBR];
+	char		*tmp;
+	char		buf[BUFF_SIZE + 1];
+
+	while ((rd = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[rd] = '\0';
+		if (str[fd] == NULL)
+			if (!(str[fd] = ft_strnew(0)))
+				return (0);
 		tmp = str[fd];
-		str[fd] = ft_strjoin(tmp, buf);
-		free(tmp);
+		if (!(str[fd] = ft_strjoin(tmp, buf)))
+			return (0);
+		ft_strdel(&tmp);
+		if (ft_strchr(str[fd], '\n'))
+			break ;
 	}
-	if (ft_strlen(str[fd]) == 0)
+	if (rd < 0)
+		return (-1);
+	else if ((str[fd] == NULL || str[fd][0] == '\0') && rd == 0)
 		return (0);
-	*line = ft_strsub(str[fd], 0, ft_strclen(str[fd], '\n'));
-	tmp = str[fd];
-	str[fd] = ft_strsub(tmp, ft_strclen(str[fd], '\n') + 1, ft_strlen(str[fd]));
-	ft_strdel(&tmp);
-	return (1);
+	return (ft_next(fd, str, line));
 }
