@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:19:17 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/28 16:01:29 by coremart         ###   ########.fr       */
+/*   Updated: 2018/11/28 17:01:20 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int				ft_check_error(char *file)
 	int		fd;
 	int		nb_pieces;
 	int		nb_lines;
+	/*t_pieces	*num_pc;*/
 
 	nb_lines = 0;
 	nb_pieces = 1;
@@ -42,15 +43,22 @@ int				ft_check_error(char *file)
 		ft_print_error(fd, 2);
 	while (get_next_line(fd, &line) == 1)
 	{
-		if (!((nb_lines + 1) % 5) && line[0] == '\0')
+		if (nb_lines == 4 && line[0] == '\0')
+		{
+			nb_lines = -1;
 			nb_pieces++;
-		else if (!((nb_lines + 1) % 5))
+		}
+		else if (nb_lines == 4)
 			ft_print_error(fd, 1);
 		else
+		{
 			ft_check_line(line, fd);
+/*			if(!(ft_strdup(num_pc[nb_pcs - 1].pieces[nb_lines], line))
+				ft_print_error(fd, 1);*/
+		}
 		nb_lines++;
 	}
-	if (nb_lines == 0)
+	if (nb_lines == 0 || nb_pieces > 26)
 		ft_print_error(fd, 1);
 	close(fd);
 	return (nb_pieces);
