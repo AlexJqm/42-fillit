@@ -6,7 +6,11 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:19:17 by aljacque          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/11/29 14:34:50 by coremart         ###   ########.fr       */
+=======
+/*   Updated: 2018/11/28 17:01:20 by aljacque         ###   ########.fr       */
+>>>>>>> 9943acf84cd3eb5708e3517cca7c78cf5d16ac56
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +79,12 @@ t_piece		*ft_check_error(char *file)
 	int		fd;
 	int		nb_pieces;
 	int		nb_lines;
+<<<<<<< HEAD
 	t_piece	*num_pc;
 	char	curr_pc[4][4];
+=======
+	/*t_pieces	*num_pc;*/
+>>>>>>> 9943acf84cd3eb5708e3517cca7c78cf5d16ac56
 
 	nb_lines = 0;
 	nb_pieces = 1;
@@ -87,17 +95,25 @@ t_piece		*ft_check_error(char *file)
 	{
 		if (nb_lines == 4 && line[0] == '\0')
 		{
+<<<<<<< HEAD
 			num_pc = pc_add(num_pc, curr_pc, nb_pieces - 1);
 			nb_pieces++;
 			nb_lines = -1;
 		}
 		else if (nb_lines == 4)
 		{
+=======
+			nb_lines = -1;
+			nb_pieces++;
+		}
+		else if (nb_lines == 4)
+>>>>>>> 9943acf84cd3eb5708e3517cca7c78cf5d16ac56
 			ft_print_error(fd, 1);
 		}
 		else
 		{
 			ft_check_line(line, fd);
+<<<<<<< HEAD
 			ft_memcpy(curr_pc[nb_lines], line, 4);
 		}
 		nb_lines++;
@@ -106,6 +122,14 @@ t_piece		*ft_check_error(char *file)
 	pc_add(num_pc, NULL, nb_pieces - 1); //segfault
 	printf("OK2\n");
 	if (nb_lines == 0)
+=======
+/*			if(!(ft_strdup(num_pc[nb_pcs - 1].pieces[nb_lines], line))
+				ft_print_error(fd, 1);*/
+		}
+		nb_lines++;
+	}
+	if (nb_lines == 0 || nb_pieces > 26)
+>>>>>>> 9943acf84cd3eb5708e3517cca7c78cf5d16ac56
 		ft_print_error(fd, 1);
 	close(fd);
 	return (num_pc);
