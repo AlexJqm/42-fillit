@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:38:29 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/28 15:40:54 by coremart         ###   ########.fr       */
+/*   Updated: 2018/11/29 11:12:31 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ typedef struct	s_piece
 	char	piece[4][4];
 }				t_piece;
 
-int				ft_check_error(char *file);
+t_piece			*ft_check_error(char *file);
 void			ft_print_error(int fd, int num);
-t_piece			*ft_fillit(char *file, int nb_pcs);
 int				get_next_line(const int fd, char **line);
 void			ft_print_tab(t_piece *tab);
 

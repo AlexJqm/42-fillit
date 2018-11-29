@@ -6,12 +6,15 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 18:36:12 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/26 13:26:09 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/11/28 16:29:10 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fillit.h"
 #include <unistd.h>
+
+#include <stdio.h>
+#include <stdlib.h>
 
 static void		ft_print_pc(t_piece pc)
 {
@@ -34,6 +37,8 @@ static void		ft_print_pc(t_piece pc)
 
 void			ft_print_tab(t_piece *tab)
 {
+	printf("OK\n");
+	exit(0);
 	int i;
 
 	i = 0;
