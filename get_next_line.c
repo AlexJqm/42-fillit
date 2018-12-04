@@ -6,7 +6,7 @@
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 17:20:49 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/29 14:32:26 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/04 14:13:12 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,35 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-static t_list	*ft_get_fd(t_list **lst, const int fd)
+static t_fd		*ft_fdnew(char *content, int fd)
 {
-	t_list		*tmp;
+	t_fd	*new;
+
+	if (!(new = (t_fd*)malloc(sizeof(t_fd))))
+		return (NULL);
+	if (!(new->content = ft_strdup(content)))
+		return (NULL);
+	new->fd = fd;
+	new->next = NULL;
+	return (new);
+}
+
+static t_fd		*ft_get_fd(t_fd **lst, const int fd)
+{
+	t_fd		*tmp;
 
 	tmp = *lst;
 	if (!*lst)
-		return ((*lst = ft_lstnew("\0", (size_t)fd)));
+		return ((*lst = ft_fdnew("\0", fd)));
 	while (1)
 	{
-		if (tmp->content_size == (size_t)fd)
+		if (tmp->fd == fd)
 			return (tmp);
 		if (!tmp->next)
 			break ;
 		tmp = tmp->next;
 	}
-	return ((tmp->next = ft_lstnew("\0", (size_t)fd)));
+	return ((tmp->next = ft_fdnew("\0", fd)));
 }
 
 static char		*ft_cpyfromcr(char *str)
@@ -46,34 +59,42 @@ static char		*ft_cpyfromcr(char *str)
 	return (str);
 }
 
+char			*ft_join_n_free(char *s1, const char *s2)
+{
+	char	*tmp;
+
+	tmp = s1;
+	if (!(s1 = ft_strjoin(tmp, s2)))
+		return (NULL);
+	free(tmp);
+	return (s1);
+}
+
 int				get_next_line(const int fd, char **line)
 {
-	static t_list	*lst;
-	t_list			*cur;
+	static t_fd		*lst;
+	t_fd			*cur;
 	char			buff[BUFF_SIZE + 1];
 	ssize_t			rd;
-	char			*tmp;
 
 	if (fd < 0 || !line || BUFF_SIZE < 0 || read(fd, buff, 0) < 0)
 		return (-1);
 	cur = ft_get_fd(&lst, fd);
-	while (!ft_strchr((cur->content) ? cur->content : "\0", '\n') &&
-			(rd = read(fd, buff, BUFF_SIZE)))
+	if (!(cur->content))
+		return (0);
+	while (!ft_strchr(cur->content, '\n') && (rd = read(fd, buff, BUFF_SIZE)))
 	{
 		buff[rd] = '\0';
-		tmp = cur->content;
-		if (!(cur->content = ft_strjoin(tmp, buff)))
+		if (!((cur->content = ft_join_n_free(cur->content, buff))))
 			return (-1);
-		free(tmp);
 	}
-	if (!cur->content || !ft_strlen(cur->content))
+	if (!cur->content[0])
 		return (0);
-	if (!(*line = ft_strndup(cur->content, ft_strclen(cur->content, '\n'))))
+	if (!((*line = ft_strndup(cur->content, ft_strclen(cur->content, '\n')))))
 		return (-1);
-	if (!ft_strchr(cur->content, '\n'))
-		ft_strdel((char**)&cur->content);
-	else
-		if (!(cur->content = ft_cpyfromcr(cur->content)))
-			return (-1);
+	if (!rd)
+		ft_strdel(&cur->content);
+	else if (!((cur->content = ft_cpyfromcr(cur->content))))
+		return (-1);
 	return (1);
 }
