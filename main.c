@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:01:03 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/05 17:56:03 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/05 18:06:17 by coremart         ###   ########.fr       */
 /*   Updated: 2018/11/28 17:05:18 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -18,6 +18,8 @@
 int		main(int ac, char **av)
 {
 	int fd;
+	t_piece *tab;
+
 	if (ac != 2)
 	{
 		ft_color("usage: ./fillit source_file", "red");
@@ -25,6 +27,7 @@ int		main(int ac, char **av)
 	}
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 		ft_print_error(fd, 2);
-	ft_print_tab(ft_check_error(fd));
+	tab = ft_check_error(fd);
+	ft_check_pieces(tab, fd);
 	return (0);
 }

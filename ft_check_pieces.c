@@ -6,11 +6,13 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:09:32 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/05 17:47:21 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/05 18:14:23 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static	int  ft_check_square(char **tab)
+#include "includes/fillit.h"
+
+static	int  ft_check_square(char tab[4][4])
 {
 	int i;
 	int j;
@@ -21,18 +23,22 @@ static	int  ft_check_square(char **tab)
 	{
 		while (++i < 3)
 			if (tab[j][i] == '#')
+			{
 				if (tab[j][i + 1] == '#')
+				{
 					if (tab[j + 1][i] == '#')
-						(tab[j + 1][i + 1] == '#') ? return (1) : return (0);
+						return ((tab[j + 1][i + 1] == '#') ? 1 : 0);
+				}
 				else
 					return (0);
+			}
 		i = -1;
 		j++;
 	}
 	return (0);
 }
 
-static	int ft_check_link(char **tab, int j, int i) /* A voir */
+static int	ft_check_link(char tab[4][4], int j, int i) /* A voir */
 {
 	int link;
 
@@ -52,7 +58,7 @@ static	int ft_check_link(char **tab, int j, int i) /* A voir */
 	return (link);
 }
 
-static  int ft_count_elem(char **tab)
+static int	ft_count_elem(char tab[4][4])
 {
 	int i;
 	int j;
@@ -73,7 +79,7 @@ static  int ft_count_elem(char **tab)
 	return (0);
 }
 
-static  void  ft_check_piece(char **tab)
+static int	ft_check_piece(char tab[4][4])
 {
 	int i;
 	int j;
