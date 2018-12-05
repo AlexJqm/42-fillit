@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 10:18:56 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/26 12:55:09 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/05 15:56:16 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int				ft_strclen(const char *s, char c);
 int				ft_count_digit(int n);
 void			*ft_memdup(const void *src, size_t size);
 void			ft_color(char *str, char *color);
+void			*ft_realloc(void *ptr, size_t cur_size, size_t new_size);
 
 #endif

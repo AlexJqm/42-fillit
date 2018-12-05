@@ -3,45 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fillit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 17:57:35 by coremart          #+#    #+#             */
-/*   Updated: 2018/11/28 13:07:43 by coremart         ###   ########.fr       */
+/*   Created: 2018/12/04 16:07:48 by coremart          #+#    #+#             */
+/*   Updated: 2018/12/05 17:53:23 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <string.h>
-#include <stdlib.h>
+#include "libft/libft.h"
 #include "includes/fillit.h"
+#include <stdlib.h>
 
-#include <stdio.h>
-
-t_piece		*ft_fillit(char *file, int nb_pcs)
+char	**ft_fillit(t_piece *tab)
 {
-	t_piece		*num_pc;
-	int			fd;
-	int			i;
-	int			j;
+	size_t	size;
+	size_t	i;
+	size_t	j;
+	size_t	res_size;	
+	char	**res;
 
-	fd = -1;
-	if (!(num_pc = (t_piece*)malloc(sizeof(t_piece) * (nb_pcs + 1))))
-		ft_print_error(fd, 1);
-	num_pc[nb_pcs].piece[0][0] = '\0';
+	size = ft_tab_size(tab);
+	res_size = ft_next_sqrt(size);
 	i = 0;
 	j = 0;
-	if ((fd = open(file, O_RDONLY)) <= 0)
-		ft_print_error(fd, 1);
-	while (j < nb_pcs)
+	while (1)
 	{
-		while (i < 4)
+		if (!(res = (char**)malloc(sizeof(char*) * res_size)))
+			ft_print_error(-1, 1);
+		while (i < res_size)
 		{
-			if (get_next_line(fd, (char**)&(num_pc[j].piece[i])) != 1)
-				ft_print_error(fd, 1);
-			i++;
+			if (!(res[i++] = (char*)malloc(res_size)))
+				ft_print_error(-1, 1);
+			while (j < res_size)
+				res[i][j++] = 0;
+			j = 0;
 		}
+		if (is_fill(tab, res, res_size++))
+			break;
 		i = 0;
-		j++;
+		j = 0;
+		while (i < res_size)
+			free(res[i++]);
+		free(res);
+		i = 0;
 	}
-	return (num_pc);
 }
