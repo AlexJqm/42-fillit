@@ -6,11 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:38:29 by coremart          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2018/12/06 16:09:24 by coremart         ###   ########.fr       */
-=======
-/*   Updated: 2018/12/06 17:10:10 by aljacque         ###   ########.fr       */
->>>>>>> 85eaa1f4bc6dd133b6a176680e66184f1cb4c012
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +30,7 @@ typedef struct	s_piece
 
 t_piece			*ft_check_error(int fd);
 void			ft_print_error(int fd, int num);
-int				get_next_line(const int fd, char **line);
+int			get_next_line(const int fd, char **line);
 void			ft_print_tab(t_piece *tab);
 size_t			ft_tab_size(t_piece *tab);
 size_t			ft_next_sqrt(size_t nb);
