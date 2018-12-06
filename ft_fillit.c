@@ -6,7 +6,7 @@
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 16:07:48 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/06 17:28:14 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/06 17:36:56 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ static int	is_fill(t_piece *tab, char **res, size_t size, int pos)
 	if (!tab.piece[0][0])
 		return (1);
 	if (!fill_with(tab.piece, res, size, pos))
-		return (tab + 1, res, size, pos);
+		return (is_fill(tab + 1, res, size, pos));
 	else
+		return (is_fill(tab, res, size, pos));
 	if (pos == size * size)
 	else if (pos = size * size)
 		return (0);
