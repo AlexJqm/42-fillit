@@ -6,7 +6,7 @@
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 16:07:48 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/05 17:53:23 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/06 17:28:14 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,20 @@
 #include "includes/fillit.h"
 #include <stdlib.h>
 
-char	**ft_fillit(t_piece *tab)
+static int	is_fill(t_piece *tab, char **res, size_t size, int pos)
+{
+	if (!tab.piece[0][0])
+		return (1);
+	if (!fill_with(tab.piece, res, size, pos))
+		return (tab + 1, res, size, pos);
+	else
+	if (pos == size * size)
+	else if (pos = size * size)
+		return (0);
+	return (is_fill(tab, res, size, pos + 1));
+}
+
+char		**ft_fillit(t_piece *tab)
 {
 	size_t	size;
 	size_t	i;
@@ -29,16 +42,16 @@ char	**ft_fillit(t_piece *tab)
 	while (1)
 	{
 		if (!(res = (char**)malloc(sizeof(char*) * res_size)))
-			ft_print_error(-1, 1);
+			ft_print_error(fd, 1);
 		while (i < res_size)
 		{
 			if (!(res[i++] = (char*)malloc(res_size)))
-				ft_print_error(-1, 1);
+				ft_print_error(fd, 1);
 			while (j < res_size)
 				res[i][j++] = 0;
 			j = 0;
 		}
-		if (is_fill(tab, res, res_size++))
+		if (is_fill(tab, res, res_size++, 0))
 			break;
 		i = 0;
 		j = 0;
