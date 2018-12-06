@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:38:29 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/05 18:06:45 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/06 17:10:10 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void			ft_print_tab(t_piece *tab);
 size_t			ft_tab_size(t_piece *tab);
 size_t			ft_next_sqrt(size_t nb);
 void			ft_check_pieces(t_piece *tab, int fd);
+t_piece			*ft_shift_pieces(t_piece *tab);
 
 #endif

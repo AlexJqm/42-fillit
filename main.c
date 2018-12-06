@@ -6,14 +6,15 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:01:03 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/05 18:06:17 by coremart         ###   ########.fr       */
-/*   Updated: 2018/11/28 17:05:18 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/06 17:27:24 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "includes/fillit.h"
 #include "libft/libft.h"
 #include <fcntl.h>
+#include <stdio.h>
 
 int		main(int ac, char **av)
 {
@@ -29,5 +30,6 @@ int		main(int ac, char **av)
 		ft_print_error(fd, 2);
 	tab = ft_check_error(fd);
 	ft_check_pieces(tab, fd);
+	ft_shift_pieces(tab);
 	return (0);
 }

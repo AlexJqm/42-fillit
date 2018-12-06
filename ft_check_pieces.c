@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:09:32 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/06 15:06:33 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/06 17:27:38 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static	int  ft_check_square(char tab[4][4])
 	return (0);
 }
 
-static int	ft_check_link(char tab[4][4], int j, int i) /* A voir */
+static int	ft_check_link(char tab[4][4], int j, int i)
 {
 	int link;
 
@@ -91,10 +91,9 @@ static int	ft_check_piece(char tab[4][4])
 	{
 		while (++i < 4)
 			if (tab[j][i] == '#')
-				link = link + ft_check_link(tab, j, i); /* A voir */
+				link = link + ft_check_link(tab, j, i);
 		i = -1;
 	}
-	printf("%d\n", j);
 	if (link == 6)
 		return (1);
 	return (0);
@@ -111,6 +110,5 @@ void         ft_check_pieces(t_piece *tab, int fd)
 			ft_print_error(fd, 1);
 		if (!(ft_count_elem(tab[i].piece)))
 			ft_print_error(fd, 1);
-		printf("%d\n", i);
 	}
 }
