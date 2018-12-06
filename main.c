@@ -31,5 +31,6 @@ int		main(int ac, char **av)
 	tab = ft_check_error(fd);
 	ft_check_pieces(tab, fd);
 	ft_shift_pieces(tab);
+	ft_convers(tab);
 	return (0);
 }
