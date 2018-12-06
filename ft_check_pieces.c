@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:09:32 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/05 18:14:23 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/06 13:55:42 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,9 @@ static	int  ft_check_square(char tab[4][4])
 		while (++i < 3)
 			if (tab[j][i] == '#')
 			{
-				if (tab[j][i + 1] == '#')
-				{
-					if (tab[j + 1][i] == '#')
-						return ((tab[j + 1][i + 1] == '#') ? 1 : 0);
-				}
-				else
-					return (0);
+				if (tab[j + 1][i] == '#' && tab[j][i + 1] == '#' && tab[j + 1][i + 1] == '#')
+					return (1);
+				return (0);
 			}
 		i = -1;
 		j++;
