@@ -6,7 +6,7 @@
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 16:07:48 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 14:27:55 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/07 15:14:02 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char		**fill_with(char piece[4][4], const char **tab, size_t size, size_t
 	j = pos % 4;
 	k = 0;
 	l = 0;
-	if (!(res = ft_tabdup(tab, size)))
+	if (!(res = ft_tab_dup(tab, size)))
 		return (NULL);
 	while (k < 4)
 	{
