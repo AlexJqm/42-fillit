@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_duptab.c                                        :+:      :+:    :+:   */
+/*   ft_tabdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 14:41:18 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/07 14:46:50 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/07 15:11:12 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	**ft_duptap(char **duptab, int size)
+char	**ft_tabdup(char **tab, size_t size)
 {
 	char **res;
-	int i;
+	size_t i;
 
-	dd
+	i = 0;
+	if (!(res = (char**)malloc(sizeof(char*) * size)))
+		return (0);
+	while (i < size)
+		res = ft_memdup(tab[i++], size);
 	return (res)
 }
