@@ -6,14 +6,14 @@
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:09:14 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 15:12:59 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/07 15:27:50 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fillit.h"
 #include <unistd.h>
 
-void	ft_print_res(char **tab, size_t size)
+void	ft_print_res(const char **tab, size_t size)
 {
 	size_t i;
 	size_t j;
