@@ -6,7 +6,7 @@
 /*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 16:07:48 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 15:29:34 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/07 15:41:23 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_fillit(t_piece *tab, int fd)
 	char	**res;
 
 	size = ft_tab_size(tab);
-	res_size = ft_next_sqrt(size);
+	res_size = ft_next_sqrt(size * 4);
 	i = 0;
 	j = 0;
 	while (1)
@@ -79,11 +79,9 @@ void	ft_fillit(t_piece *tab, int fd)
 			ft_print_error(fd, 1);
 		while (i < res_size)
 		{
-			if (!(res[i++] = (char*)malloc(res_size)))
+			if (!(res[i] = (char*)malloc(res_size)))
 				ft_print_error(fd, 1);
-			while (j < res_size)
-				res[i][j++] = 0;
-			j = 0;
+			ft_bzero(res[i++], res_size);
 		}
 		if (is_fill(tab, (const char **)res, res_size++, 0))
 			break;
