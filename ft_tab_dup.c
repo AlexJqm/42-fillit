@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 14:41:18 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/07 15:51:50 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:39:37 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 char	**ft_tab_dup(const char **tab, size_t size)
 {
-	char **res;
-	size_t i;
+	char	**res;
+	size_t	i;
 
 	i = 0;
 	if (!(res = (char**)malloc(sizeof(char*) * size)))

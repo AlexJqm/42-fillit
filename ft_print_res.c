@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_res.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 16:09:57 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 17:00:18 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:36:33 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fillit.h"
 #include <unistd.h>
-#include <stdio.h>
 
 void	ft_print_res(const char **tab, size_t size)
 {
-	size_t i;
-	size_t j;
-	char point;
+	size_t	i;
+	size_t	j;
+	char	point;
 
 	i = 0;
 	j = 0;

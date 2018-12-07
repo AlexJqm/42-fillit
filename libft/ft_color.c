@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 12:00:16 by aljacque          #+#    #+#             */
-/*   Updated: 2018/11/28 17:03:26 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:41:32 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,4 @@ void	ft_color(char *str, char *color)
 		return ;
 	ft_putstr(str);
 	ft_putstr("\033[0m\n");
-
 }

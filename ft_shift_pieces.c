@@ -6,12 +6,11 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 16:35:39 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/06 18:36:24 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:44:03 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fillit.h"
-#include <stdio.h>
 
 static int		ft_check_move_top(char tab[4][4])
 {
@@ -83,5 +82,5 @@ t_piece			*ft_shift_pieces(t_piece *tab)
 		while (ft_check_move_left(tab[i].piece))
 			ft_move_left(tab[i].piece);
 	}
-	return(tab);
+	return (tab);
 }

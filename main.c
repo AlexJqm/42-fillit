@@ -6,20 +6,18 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:01:03 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 15:23:39 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:43:32 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "includes/fillit.h"
 #include "libft/libft.h"
 #include <fcntl.h>
-#include <stdio.h>
 
-int		main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	int fd;
-	t_piece *tab;
+	int		fd;
+	t_piece	*tab;
 
 	if (ac != 2)
 	{

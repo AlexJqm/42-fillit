@@ -6,14 +6,13 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 16:07:48 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 16:46:58 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:54:33 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "includes/fillit.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 static char		**fill_with(char piece[4][4], const char **tab, size_t size, size_t pos)
 {
@@ -23,8 +22,8 @@ static char		**fill_with(char piece[4][4], const char **tab, size_t size, size_t
 	size_t l;
 	char **res;
 
-	i = pos / 4;
-	j = pos % 4;
+	i = pos / size;
+	j = pos % size;
 	k = 0;
 	l = 0;
 	if (!(res = ft_tab_dup(tab, size)))
@@ -52,13 +51,13 @@ static char		**fill_with(char piece[4][4], const char **tab, size_t size, size_t
 
 static int		is_fill(t_piece *tab, const char **res, size_t size, size_t pos)
 {
-	if (!tab->piece[0][0] && res)
+	if (!res || pos > size * size)
+		return (0);
+	if (!tab->piece[0][0])
 	{
 		ft_print_res(res, size);
 		return (1);
 	}
-	if (!res || pos > size * size)
-		return (0);
 	return (is_fill(tab + 1, (const char **)fill_with(tab->piece, res, size, pos), size, 0) || is_fill(tab, res, size, pos + 1));
 }
 

@@ -6,8 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:19:17 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/05 17:51:58 by coremart         ###   ########.fr       */
-/*   Updated: 2018/11/28 17:01:20 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:35:34 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +16,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#include <stdio.h>
-
-static void		ft_check_line(char *str, int fd)
+static void			ft_check_line(char *str, int fd)
 {
 	int i;
 
@@ -34,43 +31,36 @@ static void		ft_check_line(char *str, int fd)
 		ft_print_error(fd, 1);
 }
 
-static void		pc_cpy(char dst[4][4], const char src[4][4])
+static void			pc_cpy(char dst[4][4], const char src[4][4])
 {
 	int i;
 	int j;
 
-	i = 0;
-	j = 0;
+	i = -1;
+	j = -1;
 	if (!src)
 	{
-		while (i < 4)
+		while (++i < 4)
 		{
-			while (j < 4)
-			{
+			while (++j < 4)
 				dst[i][j] = '\0';
-				j++;
-			}
-			j = 0;
-			i++;
+			j = -1;
 		}
 	}
 	else
-		while (i < 4)
+		while (++i < 4)
 		{
-			while (j < 4)
-			{
+			while (++j < 4)
 				dst[i][j] = src[i][j];
-				j++;
-			}
-			j = 0;
-			i++;
+			j = -1;
 		}
 }
 
-static t_piece		*pc_add(t_piece *num_pc, char pc[4][4], int curr_size, int fd)
+static t_piece		*pc_add(t_piece *num_pc, char pc[4][4],
+					int curr_size, int fd)
 {
-	t_piece *tmp;
-	int i;
+	t_piece	*tmp;
+	int		i;
 
 	tmp = num_pc;
 	i = 0;
@@ -85,7 +75,7 @@ static t_piece		*pc_add(t_piece *num_pc, char pc[4][4], int curr_size, int fd)
 	return (num_pc);
 }
 
-t_piece		*ft_check_error(int fd)
+t_piece				*ft_check_error(int fd)
 {
 	char	*line;
 	int		nb_pieces;
@@ -95,7 +85,6 @@ t_piece		*ft_check_error(int fd)
 
 	nb_lines = 0;
 	nb_pieces = 1;
-	num_pc = NULL;
 	while (get_next_line(fd, &line) == 1)
 	{
 		ft_check_line(line, fd);
