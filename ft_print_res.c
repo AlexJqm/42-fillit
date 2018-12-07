@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_res.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:09:14 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 15:27:50 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/07 15:53:30 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_print_res(const char **tab, size_t size)
 			write(1, &tab[i][j], 1);
 			j++;
 		}
+		write(1, "\n", 1);
 		j = 0;
 		i++;
 	}
