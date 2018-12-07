@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 16:07:48 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 15:49:36 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/07 16:01:13 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,11 @@ static char		**fill_with(char piece[4][4], const char **tab, size_t size, size_t
 		{
 			if (piece[k][l] != '.')
 			{
-				if (i + k >= size || j + l >= size)
+				if (i + k >= size || j + l >= size || res[i + k][j + l])
 				{
 					ft_free_tab(res, size);
 					return (NULL);
 				}
-				printf("%c\n\n", res[0][0]);
 				res[i + k][j + l] = piece[k][l];
 			}
 			l++;
@@ -85,7 +84,7 @@ void	ft_fillit(t_piece *tab, int fd)
 				ft_print_error(fd, 1);
 			ft_bzero(res[i++], res_size);
 		}
-		if (is_fill(tab, (const char **)res, res_size++, 0))
+		if (is_fill(tab, (const char **)res, res_size, 0))
 			break;
 		i = 0;
 		j = 0;
@@ -93,5 +92,6 @@ void	ft_fillit(t_piece *tab, int fd)
 			free(res[i++]);
 		free(res);
 		i = 0;
+		res_size++;
 	}
 }
