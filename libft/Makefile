@@ -6,11 +6,11 @@
 #    By: coremart <coremart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 11:46:04 by coremart          #+#    #+#              #
-#    Updated: 2018/12/07 18:17:47 by aljacque         ###   ########.fr        #
+#    Updated: 2018/12/07 18:18:33 by aljacque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.
+NAME = libft.a
 SRCS = ft_strlen.c \
 	   ft_strdup.c \
 	   ft_strcpy.c \
