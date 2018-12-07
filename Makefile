@@ -6,7 +6,7 @@
 #    By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/21 16:52:56 by aljacque          #+#    #+#              #
-#    Updated: 2018/12/07 17:58:25 by aljacque         ###   ########.fr        #
+#    Updated: 2018/12/07 18:09:59 by aljacque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,10 +53,7 @@ $(NAME):
 	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait..."
 	@gcc $(CFLAG) -c $(SRC) -I $(HEADER)
 	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) compilation OK"
-	@ar rc $(NAME) $(OBJ)
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) ar rc OK"
-	@ranlib $(NAME)
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) ranlib OK"
+	@gcc $(CFLAG) -o $(NAME) $(OBJ) -Llibft -lft
 	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) $(NAME) created.\n"
 
 clean:
