@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:01:03 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/06 17:27:24 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/06 18:36:51 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ int		main(int ac, char **av)
 	tab = ft_check_error(fd);
 	ft_check_pieces(tab, fd);
 	ft_shift_pieces(tab);
+	ft_convers(tab);
+	ft_print_tab(tab);
 	return (0);
 }

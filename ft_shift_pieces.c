@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 16:35:39 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/06 17:25:32 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/06 18:36:24 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,19 +76,12 @@ t_piece			*ft_shift_pieces(t_piece *tab)
 	int i;
 
 	i = -1;
-	ft_print_tab(tab);
 	while (tab[++i].piece[0][0])
 	{
 		while (ft_check_move_top(tab[i].piece))
-		{
 			ft_move_top(tab[i].piece);
-			ft_print_tab(tab);
-		}
 		while (ft_check_move_left(tab[i].piece))
-		{
 			ft_move_left(tab[i].piece);
-			ft_print_tab(tab);
-		}
 	}
 	return(tab);
 }
