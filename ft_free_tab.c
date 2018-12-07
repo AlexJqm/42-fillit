@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabdup.c                                        :+:      :+:    :+:   */
+/*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/07 14:41:18 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/07 15:11:12 by aljacque         ###   ########.fr       */
+/*   Created: 2018/12/07 14:33:57 by aljacque          #+#    #+#             */
+/*   Updated: 2018/12/07 15:11:55 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	**ft_tabdup(char **tab, size_t size)
+#include "includes/fillit.h"
+
+void	ft_free_tab(char **tab, size_t size)
 {
-	char **res;
-	size_t i;
+	int	i;
 
 	i = 0;
-	if (!(res = (char**)malloc(sizeof(char*) * size)))
-		return (0);
 	while (i < size)
-		res = ft_memdup(tab[i++], size);
-	return (res)
+		free(tab[i++]);
+	free(tab);
+	tab = NULL;
 }
