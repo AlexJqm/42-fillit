@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fillit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coremart <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 16:07:48 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 15:41:23 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/07 15:49:36 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "includes/fillit.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static char		**fill_with(char piece[4][4], const char **tab, size_t size, size_t pos)
 {
@@ -39,6 +40,7 @@ static char		**fill_with(char piece[4][4], const char **tab, size_t size, size_t
 					ft_free_tab(res, size);
 					return (NULL);
 				}
+				printf("%c\n\n", res[0][0]);
 				res[i + k][j + l] = piece[k][l];
 			}
 			l++;
@@ -66,7 +68,7 @@ void	ft_fillit(t_piece *tab, int fd)
 	size_t	size;
 	size_t	i;
 	size_t	j;
-	size_t	res_size;	
+	size_t	res_size;
 	char	**res;
 
 	size = ft_tab_size(tab);
