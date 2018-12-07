@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 16:07:48 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 16:06:52 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/07 16:46:58 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static char		**fill_with(char piece[4][4], const char **tab, size_t size, size_t
 
 static int		is_fill(t_piece *tab, const char **res, size_t size, size_t pos)
 {
-	if (!tab->piece[0][0])
+	if (!tab->piece[0][0] && res)
 	{
 		ft_print_res(res, size);
 		return (1);
@@ -66,14 +66,12 @@ void	ft_fillit(t_piece *tab, int fd)
 {
 	size_t	size;
 	size_t	i;
-	size_t	j;
 	size_t	res_size;
 	char	**res;
 
 	size = ft_tab_size(tab);
 	res_size = ft_next_sqrt(size * 4);
 	i = 0;
-	j = 0;
 	while (1)
 	{
 		if (!(res = (char**)malloc(sizeof(char*) * res_size)))
@@ -87,7 +85,6 @@ void	ft_fillit(t_piece *tab, int fd)
 		if (is_fill(tab, (const char **)res, res_size, 0))
 			break;
 		i = 0;
-		j = 0;
 		while (i < res_size)
 			free(res[i++]);
 		free(res);
