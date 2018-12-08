@@ -6,20 +6,21 @@
 #    By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/21 16:52:56 by aljacque          #+#    #+#              #
-#    Updated: 2018/12/07 18:09:59 by aljacque         ###   ########.fr        #
+#    Updated: 2018/12/08 16:22:55 by aljacque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
-SRC = 	ft_check_error.c \
+SRC = 	ft_2dim_alloc.c \
+		ft_check_error.c \
 		ft_check_pieces.c \
 		ft_convers.c \
 		ft_fillit.c \
 		ft_free_tab.c \
+		ft_init_tab.c\
 		ft_next_sqrt.c \
 		ft_print_error.c \
 		ft_print_res.c \
-		ft_print_tab.c \
 		ft_shift_pieces.c \
 		ft_tab_dup.c \
 		ft_tab_size.c \
@@ -50,29 +51,25 @@ all: $(NAME)
 
 $(NAME):
 	@make -C libft
-	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait..."
+	@echo "\t$(LOG_YELLOW)(libft⚡)$(LOG_NOCOLOR)\t\t created"
 	@gcc $(CFLAG) -c $(SRC) -I $(HEADER)
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) compilation OK"
 	@gcc $(CFLAG) -o $(NAME) $(OBJ) -Llibft -lft
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) $(NAME) created.\n"
+	@echo "\t$(LOG_BLUE)($(NAME)⚡)$(LOG_NOCOLOR)\t\t created"
 
 clean:
 	@make clean -C libft
-	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait..."
+	@echo "\t$(LOG_YELLOW)(libft⚡)$(LOG_NOCOLOR)\t\t all ojects deleted"
 	@rm -f $(OBJ)
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) rm .o OK"
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) $(NAME) succes all .o deleted.\n"
+	@echo "\t$(LOG_BLUE)($(NAME)⚡)$(LOG_NOCOLOR)\t\t all ojects deleted"
 
 fclean: clean
 	@make fclean -C libft
-	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait..."
+	@echo "\t$(LOG_YELLOW)(libft⚡)$(LOG_NOCOLOR)\t\t deleted"
 	@rm -f $(NAME)
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) rm $(NAME) OK"
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) $(NAME) succes $(NAME) deleted.\n"
+	@echo "\t$(LOG_BLUE)($(NAME)⚡)$(LOG_NOCOLOR)\t\t deleted"
 
-re:
-	fclean all
-	make re -C libft
+re: fclean all
+	@make re -C libft
 
 # EXTRA #
 

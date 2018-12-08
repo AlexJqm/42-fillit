@@ -6,10 +6,11 @@
 #    By: coremart <coremart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 11:46:04 by coremart          #+#    #+#              #
-#    Updated: 2018/12/07 18:18:33 by aljacque         ###   ########.fr        #
+#    Updated: 2018/12/08 16:16:17 by aljacque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 SRCS = ft_strlen.c \
 	   ft_strdup.c \
@@ -78,12 +79,10 @@ SRCS = ft_strlen.c \
 	   ft_strclen.c \
 	   ft_count_digit.c \
 	   ft_memdup.c \
-	   ft_color.c
-OBJ = $(SRC:.c=.o)
+	   ft_color.c \
+	   ft_realloc.c
+OBJ = $(SRCS:.c=.o)
 HEADER = libft.h
-CFLAG =	-Wall -Werror -Wextra
-
-# COLOR MACRO #
 
 LOG_CLEAR		=	\033[2K
 LOG_UP 			=	\033[A
@@ -97,35 +96,19 @@ LOG_VIOLET		=	\033[1;35m
 LOG_CYAN		=	\033[1;36m
 LOG_WHITE		=	\033[1;37m
 
-# EXEC #
-
 all: $(NAME)
 
 $(NAME):
-	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait..."
-	@gcc $(CFLAG) -c $(SRCS) -I $(HEADER)
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) compilation OK"
-	@ar rc $(NAME) $(OBJ)
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) ar rc OK"
-	@ranlib $(NAME)
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) ranlib OK"
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) $(NAME) created.\n"
+	@gcc $(CFLAGS) -c $(SRCS) -I $(HEADER)
+	@ar rcs $(NAME) $(OBJ)
 
 clean:
-	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait..."
 	@rm -f $(OBJ)
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) rm .o OK"
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) $(NAME) succes all .o deleted.\n"
 
-fclean: clean
-	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait..."
-	@rm -f $(NAME)
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) rm $(NAME) OK"
-	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) $(NAME) succes $(NAME) deleted.\n"
+fclean:
+	@rm -f $(NAME) $(OBJ)
 
 re: fclean all
-
-# EXTRA #
 
 norm:
 	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait...\n"

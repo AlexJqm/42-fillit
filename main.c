@@ -6,13 +6,14 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:01:03 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 17:43:32 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/08 16:25:31 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fillit.h"
 #include "libft/libft.h"
 #include <fcntl.h>
+#include <unistd.h>
 
 int	main(int ac, char **av)
 {
@@ -21,7 +22,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		ft_color("usage: ./fillit source_file", "red");
+		write(1, "usage: ./fillit source_file\n", 28);
 		return (0);
 	}
 	if ((fd = open(av[1], O_RDONLY)) == -1)
