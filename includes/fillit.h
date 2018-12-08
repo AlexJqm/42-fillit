@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:38:29 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 17:40:22 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/08 13:35:32 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ void			ft_fillit(t_piece *tab, int fd);
 void			ft_free_tab(char **tab, size_t size);
 void			ft_print_error(int fd, int num);
 void			ft_print_res(const char **tab, size_t size);
+void			**ft_2dim_alloc(size_t x, size_t y);
+void			ft_init_tab(char **tab, size_t x_len, size_t y_len);
 
 #endif
