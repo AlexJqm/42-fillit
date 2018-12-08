@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 16:07:48 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/08 17:08:24 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/08 19:25:27 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	is_fill(t_piece *tab, const char **res, size_t size, size_t pos)
 	const char	**new_res;
 	size_t		last_pos;
 
-	last_pos = size * size - 4;
+	last_pos = size * size - 3;
 	if (!tab->piece[0][0])
 	{
 		ft_print_res(res, size);
@@ -66,10 +66,10 @@ static int	is_fill(t_piece *tab, const char **res, size_t size, size_t pos)
 	if (pos == last_pos)
 		return (0);
 	if (is_fill(tab + 1, new_res, size, 0) || is_fill(tab, res, size, pos + 1))
-		{
-			ft_free_tab((char**)new_res, size);
-			return (1);
-		}
+	{
+		ft_free_tab((char**)new_res, size);
+		return (1);
+	}
 	ft_free_tab((char**)new_res, size);
 	return (0);
 }
@@ -94,5 +94,6 @@ void		ft_fillit(t_piece *tab, int fd)
 		ft_free_tab(res, res_size);
 		res_size++;
 	}
+	ft_free_tab(res, res_size);
 	free(tab);
 }

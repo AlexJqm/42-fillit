@@ -6,34 +6,11 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:09:32 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/08 16:31:08 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/08 19:25:44 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fillit.h"
-
-/*static int	ft_check_square(char tab[4][4])
-{
-	int i;
-	int j;
-
-	i = -1;
-	j = 0;
-	while (j < 3)
-	{
-		while (++i < 3)
-			if (tab[j][i] == '#')
-			{
-				if (tab[j + 1][i] == '#' && tab[j][i + 1] == '#'
-				&& tab[j + 1][i + 1] == '#')
-					return (1);
-				return (0);
-			}
-		i = -1;
-		j++;
-	}
-	return (0);
-}*/
 
 static int	ft_check_link(char tab[4][4], int j, int i)
 {
@@ -85,8 +62,6 @@ static int	ft_check_piece(char tab[4][4])
 	i = -1;
 	j = -1;
 	link = 0;
-	/*if (ft_check_square(tab))
-		return (1);*/
 	while (++j < 4)
 	{
 		while (++i < 4)
