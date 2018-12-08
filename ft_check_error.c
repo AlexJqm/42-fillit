@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:19:17 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/07 17:35:34 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/08 17:53:24 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ static t_piece		*pc_add(t_piece *num_pc, char pc[4][4],
 		pc_cpy(num_pc[i].piece, tmp[i].piece);
 		i++;
 	}
+	if (tmp)
+		free(tmp);
 	pc_cpy(num_pc[i].piece, pc);
 	return (num_pc);
 }
@@ -85,10 +87,12 @@ t_piece				*ft_check_error(int fd)
 
 	nb_lines = 0;
 	nb_pieces = 1;
+	num_pc = NULL;
 	while (get_next_line(fd, &line) == 1)
 	{
 		ft_check_line(line, fd);
 		ft_memcpy(curr_pc[nb_lines], line, 4);
+		free(line);
 		nb_lines++;
 		if (nb_lines == 4)
 		{
@@ -96,8 +100,12 @@ t_piece				*ft_check_error(int fd)
 			nb_pieces++;
 			if (get_next_line(fd, &line) == 1)
 				(line[0]) ? ft_print_error(fd, 1) : (nb_lines = 0);
+			if (nb_lines == 0)
+				free(line);
 		}
 	}
+	while (1)
+		;
 	num_pc = pc_add(num_pc, NULL, nb_pieces - 1, fd);
 	if (nb_lines == 0 || nb_pieces > 26)
 		ft_print_error(fd, 1);
