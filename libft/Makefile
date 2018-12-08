@@ -6,11 +6,10 @@
 #    By: coremart <coremart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 11:46:04 by coremart          #+#    #+#              #
-#    Updated: 2018/11/26 12:55:13 by aljacque         ###   ########.fr        #
+#    Updated: 2018/12/07 18:18:33 by aljacque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 SRCS = ft_strlen.c \
 	   ft_strdup.c \
@@ -80,19 +79,61 @@ SRCS = ft_strlen.c \
 	   ft_count_digit.c \
 	   ft_memdup.c \
 	   ft_color.c
-OBJ = $(SRCS:.c=.o)
-HEADER = ./includes/libft.h
+OBJ = $(SRC:.c=.o)
+HEADER = libft.h
+CFLAG =	-Wall -Werror -Wextra
+
+# COLOR MACRO #
+
+LOG_CLEAR		=	\033[2K
+LOG_UP 			=	\033[A
+LOG_NOCOLOR		=	\033[0m
+LOG_BLACK		=	\033[1;30m
+LOG_RED			=	\033[1;31m
+LOG_GREEN		=	\033[1;32m
+LOG_YELLOW		=	\033[1;33m
+LOG_BLUE		=	\033[1;34m
+LOG_VIOLET		=	\033[1;35m
+LOG_CYAN		=	\033[1;36m
+LOG_WHITE		=	\033[1;37m
+
+# EXEC #
 
 all: $(NAME)
 
 $(NAME):
-	gcc $(CFLAGS) -c $(SRCS) -I $(HEADER)
-	ar rcs $(NAME) $(OBJ)
+	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait..."
+	@gcc $(CFLAG) -c $(SRCS) -I $(HEADER)
+	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) compilation OK"
+	@ar rc $(NAME) $(OBJ)
+	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) ar rc OK"
+	@ranlib $(NAME)
+	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) ranlib OK"
+	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) $(NAME) created.\n"
 
 clean:
-	rm -f $(OBJ)
+	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait..."
+	@rm -f $(OBJ)
+	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) rm .o OK"
+	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) $(NAME) succes all .o deleted.\n"
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait..."
+	@rm -f $(NAME)
+	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) rm $(NAME) OK"
+	@echo "\t$(LOG_GREEN)██$(LOG_NOCOLOR) $(NAME) succes $(NAME) deleted.\n"
 
 re: fclean all
+
+# EXTRA #
+
+norm:
+	@echo "\n\t$(LOG_RED)██$(LOG_NOCOLOR) please wait...\n"
+	@norminette -RCheckForbiddenSourceHeader $(SRCS) | grep -e 'Warning' -e 'Error' -B1 || true
+	@echo "\n\t$(LOG_GREEN)██$(LOG_NOCOLOR) norminette finish.\n"
+
+help:
+	@echo "\n\t$(LOG_YELLOW)clean$(LOG_NOCOLOR)\t\tCleaning all object"
+	@echo "\t$(LOG_YELLOW)fclean$(LOG_NOCOLOR)\t\tCleaning all object and executable"
+	@echo "\t$(LOG_YELLOW)norm$(LOG_NOCOLOR)\t\tCheck norminette"
+	@echo "\t$(LOG_YELLOW)re$(LOG_NOCOLOR)\t\tDeleting all object and build\n"
