@@ -6,7 +6,7 @@
 /*   By: coremart <coremart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 16:07:48 by coremart          #+#    #+#             */
-/*   Updated: 2018/12/07 17:54:33 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/08 12:56:30 by coremart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include "includes/fillit.h"
 #include <stdlib.h>
 
-static char		**fill_with(char piece[4][4], const char **tab, size_t size, size_t pos)
+#include <stdio.h>
+
+static char	**fill_with(char piece[4][4], const char **tab, size_t size, size_t pos)
 {
 	size_t i;
 	size_t j;
@@ -49,19 +51,26 @@ static char		**fill_with(char piece[4][4], const char **tab, size_t size, size_t
 	return (res);
 }
 
-static int		is_fill(t_piece *tab, const char **res, size_t size, size_t pos)
+static int	is_fill(t_piece *tab, const char **res, size_t size, size_t pos)
 {
-	if (!res || pos > size * size)
-		return (0);
+	const char **new_res;
+	size_t last_pos;
+
+	last_pos = size * size - 4;
 	if (!tab->piece[0][0])
 	{
 		ft_print_res(res, size);
 		return (1);
 	}
-	return (is_fill(tab + 1, (const char **)fill_with(tab->piece, res, size, pos), size, 0) || is_fill(tab, res, size, pos + 1));
+	new_res = (const char**)fill_with(tab->piece, res, size, pos);
+	while (!new_res && pos < last_pos)
+		new_res = (const char**)fill_with(tab->piece, res, size, ++pos);
+	if (pos == last_pos)
+		return (0);
+	return (is_fill(tab + 1, new_res, size, 0) || is_fill(tab, res, size, pos + 1));
 }
 
-void	ft_fillit(t_piece *tab, int fd)
+void		ft_fillit(t_piece *tab, int fd)
 {
 	size_t	size;
 	size_t	i;
