@@ -6,13 +6,13 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:09:32 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/07 17:43:46 by aljacque         ###   ########.fr       */
+/*   Updated: 2018/12/08 16:31:08 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fillit.h"
 
-static int	ft_check_square(char tab[4][4])
+/*static int	ft_check_square(char tab[4][4])
 {
 	int i;
 	int j;
@@ -33,7 +33,7 @@ static int	ft_check_square(char tab[4][4])
 		j++;
 	}
 	return (0);
-}
+}*/
 
 static int	ft_check_link(char tab[4][4], int j, int i)
 {
@@ -85,8 +85,8 @@ static int	ft_check_piece(char tab[4][4])
 	i = -1;
 	j = -1;
 	link = 0;
-	if (ft_check_square(tab))
-		return (1);
+	/*if (ft_check_square(tab))
+		return (1);*/
 	while (++j < 4)
 	{
 		while (++i < 4)
@@ -94,7 +94,7 @@ static int	ft_check_piece(char tab[4][4])
 				link = link + ft_check_link(tab, j, i);
 		i = -1;
 	}
-	if (link == 6)
+	if (link == 6 || link == 8)
 		return (1);
 	return (0);
 }
