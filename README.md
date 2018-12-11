@@ -5,4 +5,5 @@ Fillit. Projet vous permettant de découvrir et/ou de vous familiariser avec une
 
 ----
 
-**⌛ Moulinette**   
+**✅ Moulinette 100/100**  
+edge_tests: **OK** | rand_tests: **OK**
