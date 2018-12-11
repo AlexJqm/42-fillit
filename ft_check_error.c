@@ -6,7 +6,7 @@
 /*   By: aljacque <aljacque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:19:17 by aljacque          #+#    #+#             */
-/*   Updated: 2018/12/08 19:41:31 by coremart         ###   ########.fr       */
+/*   Updated: 2018/12/11 15:40:28 by aljacque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,17 @@ static t_piece	*pc_add(t_piece *num_pc, char pc[4][4],
 
 void			ft_check_nb(int nb_lines, int nb_pieces, int fd)
 {
-	if (nb_lines == 0 || nb_pieces > 26)
+	if (nb_lines < 4 || nb_pieces > 26)
 		ft_print_error(fd, 1);
 }
 
 t_piece			*ft_check_error(int fd)
 {
-	char	*line;
-	int		nb_pieces;
-	int		nb_lines;
-	t_piece	*num_pc;
-	char	curr_pc[4][4];
+	char		*line;
+	int			nb_pieces;
+	int			nb_lines;
+	t_piece		*num_pc;
+	char		curr_pc[4][4];
 
 	nb_lines = 0;
 	nb_pieces = 1;

@@ -27,8 +27,7 @@ SRC = 	ft_2dim_alloc.c \
 		get_next_line.c \
 		main.c
 OBJ = $(SRC:.c=.o)
-HEADER =	includes/fillit.h \
-			libft/libft.h
+HEADER =	includes/fillit.h
 CFLAG = -Wall -Werror -Wextra
 
 # COLOR MACRO #
